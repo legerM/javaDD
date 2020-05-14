@@ -1,4 +1,6 @@
-package warriors.contracts;
+package warriors.engine;
+
+import warriors.contracts.Hero;
 
 public class WizardHero implements Hero {
 

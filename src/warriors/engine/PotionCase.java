@@ -1,25 +1,21 @@
 package warriors.engine;
 
-public class PotionCase {
-	static int lifeGiven = 0 ;
-	PotionCase(int lifeGiven){
-		PotionCase.lifeGiven=lifeGiven;
-	}
-	
-	static int PotionMinor(){
-	
-		lifeGiven +=1 ;
-		return lifeGiven;
+
+public class PotionCase implements Case{
+	String name;
+	int bonus;
+	PotionCase(String name , int bonus){
+		this.name=name;
+		this.bonus=bonus;
 		
 	}
+	public static PotionCase potionminor = new PotionMinorCase();
+	public static PotionCase potionstandar=new PotionStandarCase();
+	public static PotionCase greatpotion = new GreatPotionCase();
 	
-	static int PotionStandard() {
-		lifeGiven +=2;
-		return lifeGiven;
-	}
-	static int GreatPotion() {
-		lifeGiven +=5;
-		return lifeGiven;
-	}
+	
+
+
+
 	
 }

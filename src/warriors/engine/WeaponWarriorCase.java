@@ -1,25 +1,21 @@
 package warriors.engine;
 
-public class WeaponWarriorCase {
-	static int ppGiven = 0 ;
-	WeaponWarriorCase(int ppGiven){
-		WeaponWarriorCase.ppGiven=ppGiven;
-	}
-	
-	static int bow(){
-	
-		ppGiven +=1 ;
-		return ppGiven;
+public class WeaponWarriorCase implements Case {
+String name;
+int dmgs;
+
+	WeaponWarriorCase(String name,int dmgs){
+		this.name=name;
+		this.dmgs=dmgs;
 		
 	}
-	
-	static int club() {
-		ppGiven +=3;
-		return ppGiven;
-	}
-	static int sword() {
-		ppGiven +=5;
-		return ppGiven;
-	}
-	
+
+public static WeaponWarriorCase bow = new BowCase();
+public static WeaponWarriorCase club = new ClubCase();
+public static WeaponWarriorCase sword = new SwordCase();
+public static WeaponWarriorCase Lightning = new LightningCase();
+public static WeaponWarriorCase fireball = new Fireball();
+
+
+
 }

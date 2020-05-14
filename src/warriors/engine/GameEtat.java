@@ -1,15 +1,21 @@
-package warriors.contracts;
+package warriors.engine;
+
+import warriors.contracts.GameState;
+import warriors.contracts.GameStatus;
+import warriors.contracts.Hero;
+import warriors.contracts.Map;
 
 public class GameEtat implements GameState {
 	String playername;
 	String gameId;
 	GameStatus Gamestat;
 	Hero hero;
-	Map map;
+	MapChoice map;
 	String lastlog;
 	int currentCase;
 
-	public GameEtat(String playername, String gameId, Hero hero, Map map){
+	public GameEtat(String playername, String gameId, Hero hero, MapChoice map ){
+		
 		this.playername=playername;
 		this.gameId=gameId;
 		this.hero=hero;
@@ -17,23 +23,28 @@ public class GameEtat implements GameState {
 		this.lastlog=gameId;
 		this.currentCase=0;
 		this.Gamestat=GameStatus.IN_PROGRESS;
+		
 	}
 
 
 	@Override
 	public String getPlayerName() {
+		
 		// TODO Auto-generated method stub
 		return playername;
 	}
 
 	@Override
 	public String getGameId() {
+		
 		// TODO Auto-generated method stub
 		return gameId;
+	
 	}
 
 	@Override
 	public GameStatus getGameStatus() {
+	
 		// TODO Auto-generated method stub
 		return Gamestat;
 	}
@@ -52,8 +63,21 @@ public class GameEtat implements GameState {
 
 	@Override
 	public String getLastLog() {
-		//TODO mettre les SYSO dedans!!!
-		return gameId;
+		
+		if(Gamestat == GameStatus.FINISHED) {
+			
+		System.out.println("vous etes sorti du Donjon ! ");
+		
+		}
+		
+		else {
+			
+			System.out.println("vous etes a la case : " + currentCase);
+			
+		}
+		
+		return lastlog;
+		
 	}
 
 	@Override
@@ -68,14 +92,11 @@ public class GameEtat implements GameState {
 
 		if (currentCase > 64 ) {
 			Gamestat = GameStatus.FINISHED;
-			System.out.println("vous etes sorti du Donjon ! ");
-		}
-		else {
-
-			System.out.println("vous etes a la case : "+ currentCase);
 		}
 		
-		
+		Case caseToPlay = this.map.getCaseAtPosition(currentCase);
+//		lastlog = lastlog + " " + caseToPlay.toString();
+		lastlog = caseToPlay.toString();
 		return currentCase;
 
 	}
