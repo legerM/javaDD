@@ -25,8 +25,7 @@ public class GameEtat implements GameState {
 		this.Gamestat=GameStatus.IN_PROGRESS;
 		
 	}
-
-
+	
 	@Override
 	public String getPlayerName() {
 		
@@ -63,43 +62,44 @@ public class GameEtat implements GameState {
 
 	@Override
 	public String getLastLog() {
-		
-		if(Gamestat == GameStatus.FINISHED) {
-			
-		System.out.println("vous etes sorti du Donjon ! ");
-		
-		}
-		
-		else {
-			
-			System.out.println("vous etes a la case : " + currentCase);
-			
-		}
-		
-		return lastlog;
-		
+	
+	return this.lastlog;
 	}
-
 	@Override
 	public int getCurrentCase() {
 
 		return currentCase ;
+		
 	}
 
 
 	public int moveForward(int dice) {
+		//int maxCase=64;
 		currentCase = currentCase + dice;
 
-		if (currentCase > 64 ) {
+	if (currentCase > this.map.getNumberOfCase()) {
+			
 			Gamestat = GameStatus.FINISHED;
+			setLastLog("Vous etes sorti du Donjon !");
+			
 		}
+		
+	else {
 		
 		Case caseToPlay = this.map.getCaseAtPosition(currentCase);
 //		lastlog = lastlog + " " + caseToPlay.toString();
 		lastlog = caseToPlay.toString();
+		setLastLog("vous etes a la case : " + currentCase);
+		
+	}
+		
 		return currentCase;
 
 	}
-
+public void setLastLog(String lastlog) {
+	this.lastlog=lastlog;
+}
 	
 }
+
+

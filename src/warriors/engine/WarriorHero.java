@@ -37,6 +37,7 @@ public class WarriorHero implements Hero{
 		// TODO Auto-generated method stub
 		return PP;
 	}
+	
 	public static void setLife(int life) {
 		WarriorHero.life=life;
 	}

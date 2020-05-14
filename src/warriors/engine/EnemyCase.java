@@ -1,7 +1,5 @@
 package warriors.engine;
 
-
-
 public class EnemyCase implements Case{
 	
 	String name;
@@ -16,10 +14,17 @@ public class EnemyCase implements Case{
 		
 	}
 	
-	public static EnemyCase dragon= new DragonCase();
-	public static EnemyCase sorcerer=new SorcererCase();
-	public static EnemyCase goblin = new GoblinCase();
+	public String getName() {
+		return this.name;
+	}
+public int getHP() {
+	return this.hP;
+}
 
-
-	
+public int getPP() {
+	return this.pP;
+}
+public String toString() {
+	return "Vous etes face à un "+this.getName()+" qui as "+this.getHP()+" Hp "+" et "+this.getPP()+" PP ";
+}
 }

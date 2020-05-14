@@ -9,13 +9,17 @@ public class PotionCase implements Case{
 		this.bonus=bonus;
 		
 	}
-	public static PotionCase potionminor = new PotionMinorCase();
-	public static PotionCase potionstandar=new PotionStandarCase();
-	public static PotionCase greatpotion = new GreatPotionCase();
-	
-	
 
+	public String getName() {
+		return this.name;
+	}
+	public int getBonus() {
+		return this.bonus;
+	}
 
+	public String toString() {
+		return "Vous trouvez une "+this.getName()+" qui vous donne "+this.getBonus()+" Hp";
+	}
 
 	
 }
